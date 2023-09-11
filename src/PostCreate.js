@@ -5,60 +5,34 @@ import React, { useState } from "react";
  *
  * When the form is submitted, a new post is created and the form contents cleared.
  */
-function PostCreate({ createPost }) {
+function PostCreate() {
   const [type, setType] = useState("Text");
-  const [content, setContent] = useState("");
-
-  // const handleChange = (event) => {
-  //   setType(event.target.value);
-  // };
 
   // TODO: When the form is submitted, a new post should be created, and the form contents cleared.
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    createPost({type, content});
-    setType("Text");
-    setContent("");
-  };
 
-  // For the tests to pass, the form below must have: (by default done)
-  // DONE - a `name="create"` attribute
-  // DONE - one child `<button>` with a `type="submit"` attribute
-  // DONE - one child `<select>` with a `name="type"` attribute
-  // DONE - one child `<textarea>` or `<input>` (not both at the same time) with a `name="content"`
+  // For the tests to pass, the form below must have:
+  // - a `name="create"` attribute
+  // - one child `<button>` with a `type="submit"` attribute
+  // - one child `<select>` with a `name="type"` attribute
+  // - one child `<textarea>` or `<input>` (not both at the same time) with a `name="content"`
 
   return (
-    <form name="create" onSubmit={ handleSubmit }>
+    <form name="create">
       <fieldset>
         <legend>Create</legend>
         <div>
           <label htmlFor="type">Type: </label>
-          <select id="type" name="type" required={true} value={type}>
+          <select id="type" name="type" required={true}>
             <option>Text</option>
             <option>Image</option>
           </select>
-          
         </div>
         <div>
           <label htmlFor="content">Content: </label>
           {type === "Text" ? (
-            <textarea 
-              id="content" 
-              name="content" 
-              required={true} 
-              rows={3} 
-              // onChange={handleChange}
-              // value={type}
-            />
+            <textarea id="content" name="content" required={true} rows={3} />
           ) : (
-            <input 
-              id="content" 
-              name="content" 
-              type="url" 
-              required={true}
-              // onChange={handleChange}
-              // value={type} 
-            />
+            <input id="content" name="content" type="url" required={true} />
           )}
         </div>
         <div>
